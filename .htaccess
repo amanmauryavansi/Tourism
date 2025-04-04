@@ -1,0 +1,14 @@
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Exclude existing files and directories from rewrite
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Exclude specific file types from rewrite
+    RewriteCond %{REQUEST_URI} !\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ [NC]
+    
+    # Redirect all other requests to index.php
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
